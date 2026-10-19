@@ -528,8 +528,8 @@ const B={
 
 const ITEMS=[
  {c:[4,1],s:'N',b:'emergencyPropped',lv:1,cat:'seg',t:'Puerta de emergencia',d:'La salida de emergencia está abierta y detenida con una caja de cartón. No hay nadie trabajando cerca.',
-  o:['No cerrarla por cuenta propia: reportar el hallazgo en SafeR con evidencia y solicitar instrucciones al cliente','Cerrarla de inmediato, revisar el área y registrarlo en bitácora','Dejarla así, seguro alguien la usa para ventilar'],
-  x:'Una salida abierta y acuñada es un acceso sin control al exterior. El guardia no la cierra sin autorización del cliente: puede haber una razón operativa. Reporta con evidencia y solicita instrucciones.'},
+  o:['Cerrarla, revisar visualmente el área, reportar el hallazgo en SafeR con evidencia y registrar la hora en bitácora','Dejarla así, seguro alguien la usa para ventilar','Salir a buscar al responsable sin avisar a Operaciones'],
+  x:'Una salida de emergencia abierta y acuñada es un acceso sin control al exterior: por ahí puede entrar una persona o salir mercancía. Se cierra, se revisa el área y se reporta con evidencia.'},
  {c:[1,4],s:'W',b:'extBlocked',lv:1,cat:'cond',t:'Extintor',d:'El extintor está en su gancho, pero tiene tarimas y cajas enfrente que impiden alcanzarlo.',
   o:['Levantar un hallazgo en SafeR con evidencia para que se atienda y se despeje de inmediato','No pasa nada mientras el extintor esté cargado','Cambiar el extintor de lugar para que se vea mejor'],
   x:'En una emergencia, cada segundo para llegar al extintor cuenta. No se reubica por cuenta propia: se reporta para que liberen el acceso.'},
@@ -1093,7 +1093,7 @@ function dlgFrame(dt){const now=performance.now();for(let i=TW.length-1;i>=0;i--
  const x=r.left+(_hv.x*.5+.5)*r.width,y=r.top+(-_hv.y*.5+.5)*r.height;N.style.left=Math.max(r.left+120,Math.min(r.right-120,x))+'px';N.style.top=Math.max(r.top+70,Math.min(r.bottom-20,y))+'px';}
 
 // ===== Efectos de la acción correcta =====
-const EFFECT={};
+const EFFECT={emergencyPropped:g=>{(g.userData.wedge||[]).forEach(o=>o.visible=false);toPose([[g.userData.door,'rotation',{y:0}]],.9);}};
 // ===== Lectura en voz alta =====
 const TTS={auto:!!LS.get('rondin3d_tts'),voice:null,male:null,female:null,ok:'speechSynthesis' in window};
 const VM=/jorge|juan|raul|raúl|pablo|diego|alvaro|álvaro|gerardo|carlos|enrique|andr[eé]s|miguel|male|hombre/i,VF=/paulina|dalia|sabina|m[oó]nica|helena|elena|laura|luc[ií]a|paloma|marisol|ximena|female|mujer|google/i;
